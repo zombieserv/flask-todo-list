@@ -31,7 +31,7 @@ services:
 
   tests:  # Заполнение БД тестовыми данными
     build:
-      context: .
+      context: backend/
       dockerfile: Dockerfile.populate
     container_name: populate
     depends_on:
