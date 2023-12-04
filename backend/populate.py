@@ -1,8 +1,8 @@
 import requests
 from env import *
-from backend.models import User, Task
+from models import User, Task
 
-users_url = "http://frontend:5000/users"
+users_url = "http://backend:5000/users"
 users_response = requests.get(users_url)
 users_count = len(users_response.json())
 
@@ -33,5 +33,6 @@ if users_count == 0:
     for task in tasks:
         task = Task(user=superuser['id'], email="admin@admin.com", text=task['text'], status=task['status'])
         task.save()
+    print(f"Test data has been added to the database: 1 user and {len(tasks)} tasks.")
 else:
     print(f"There are already {users_count} users in the database. No new users & tasks added.")

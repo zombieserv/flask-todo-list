@@ -3,5 +3,7 @@ WORKDIR /app
 RUN pip install --no-cache-dir pytest
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+COPY models.py .
 COPY populate.py .
+COPY env.py .
 CMD ["sh", "-c", "python populate.py"]
