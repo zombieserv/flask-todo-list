@@ -28,3 +28,11 @@ services:
     container_name: frontend
     ports:
       - "3000:80"
+
+  tests:  # Заполнение БД тестовыми данными
+    build:
+      context: .
+      dockerfile: Dockerfile.populate
+    container_name: populate
+    depends_on:
+      - frontend
